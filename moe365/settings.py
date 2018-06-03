@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'zudr7etvg-fjyq=-h3vck7c&!cuyq$t@6y#ix)k(31fj)@j39_'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost','172.0.0.1','moe365.herokuapp.com']
 
 
 # Application definition
