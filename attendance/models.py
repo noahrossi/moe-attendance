@@ -1,11 +1,32 @@
 from django.db import models
-import time
+import datetime
 
 # Create your models here.
 class Student(models.Model):
-    birthday = models.DateTimeField('student birthday')
+    subteams = (
+            ('m', 'Mechanical'),
+            ('e', 'Electrical'),
+            ('p', 'Programming'),
+            ('d', 'Media'),
+    )
+    birthmonths = (
+            (1, 'Jan'),
+            (2, 'Feb'),
+            (3, 'Mar'),
+            (4, 'Apr'),
+            (5, 'May'),
+            (6, 'Jun'),
+            (7, 'Jul'),
+            (8, 'Aug'),
+            (9, 'Sept'),
+            (10, 'Oct'),
+            (11, 'Nov'),
+            (12, 'Dec'),
+    )
+    birthmonth = models.PositiveSmallIntegerField('student birthmonth', choices=birthmonths)
     first_name = models.CharField(max_length=20)
     last_name = models.CharField(max_length=20)
+    subteam = models.CharField(max_length=1, choices=subteams)
 
     def __str__(self):
         return self.first_name + ' ' + self.last_name
@@ -15,17 +36,18 @@ class Meeting(models.Model):
     meeting_category = (
             ('u', 'MOE U'),
             ('b', 'Build'),
-            ('e', 'Non-mandatory'),
+            ('n', 'Non-mandatory'),
             ('o', 'Other'),
     )
 
-    date = models.DateTimeField('meeting date',primary_key=True)
+    date = models.DateField('meeting date',primary_key=True)
+    time = models.TimeField('meeting time')
     category = models.CharField(max_length=1, choices=meeting_category)
 
     students = models.ManyToManyField(Student, through="SignIn")
 
     def __str__(self):
-        return time.strftime(date, '%x') + ' ' + meeting_category[category]
+        return datetime.datetime.strftime(self.date, '%x')
 
 class SignIn(models.Model):
     meeting_id = models.ForeignKey(Meeting, on_delete=models.CASCADE)

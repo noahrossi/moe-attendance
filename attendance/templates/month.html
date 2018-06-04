@@ -1,0 +1,13 @@
+{% if students %}
+    <ul>
+    {% for student in students %}
+	<a href="{% url 'signin' student.id %}">
+	    <button style="width:80%; margin: 10px 10px 10px 10%; padding: 5px 5px 5px 5px;">
+		{{ student.last_name }}, {{ student.first_name }}
+	    </button>
+	</a>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+    {% endif %}

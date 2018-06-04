@@ -1,0 +1,14 @@
+{% if meeting %}
+<h1>Meeting: {{ meeting }}</h1>
+<h2>It is {{ time }}</h2>
+{% for i in "xxxxxxxxxxxx" %}
+    <a href="{{ forloop.counter0|add:1 }}">
+        <button style="width:80%; margin: 10px 10px 10px 10%; padding: 5px 5px 5px 5px;">
+            {{ forloop.counter0|add:1 }}
+        </button>
+    </a>
+{% endfor %}
+
+{% else %}
+<h1>No meeting today</h1>
+{% endif %}
