@@ -9,7 +9,12 @@ from django.shortcuts import get_list_or_404, get_object_or_404
 def index(request):
     today = datetime.datetime.strftime(datetime.datetime.now(), '%A, %B %-d')
     time = datetime.datetime.strftime(datetime.datetime.now(), '%-I:%M %p')
-    current_meeting = Meeting.objects.get(pk=datetime.datetime.now().date())
+
+    try:
+        current_meeting = Meeting.objects.get(pk=datetime.datetime.now().date())
+    except Meeting.DoesNotExist:
+        current_meeting = None
+
     context = {'today': today, 'time': time, 'meeting': current_meeting}
 
     return render(request, 'index.html', context)

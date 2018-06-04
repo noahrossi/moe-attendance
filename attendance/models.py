@@ -28,6 +28,12 @@ class Student(models.Model):
     last_name = models.CharField(max_length=20)
     subteam = models.CharField(max_length=1, choices=subteams)
 
+    def meetings_attended(self):
+        return len(SignIn.objects.filter(student_id=self))
+
+    def percent_attended(self):
+        return str(round(self.meetings_attended()/len(SignIn.objects.all())*100,2)) + "%"
+
     def __str__(self):
         return self.first_name + ' ' + self.last_name
 
