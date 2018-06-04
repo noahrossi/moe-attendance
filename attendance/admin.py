@@ -10,6 +10,7 @@ class SignInInline(admin.TabularInline):
 
 class StudentAdmin(admin.ModelAdmin):
     list_display = ['last_name', 'first_name', 'subteam', 'meetings_attended','percent_attended']
+    search_fields = ['first_name', 'last_name']
     inlines = (SignInInline,)
 
     def get_queryset(self, request):
@@ -33,3 +34,4 @@ class MeetingAdmin(admin.ModelAdmin):
 admin.site.register(Student, StudentAdmin)
 admin.site.register(Meeting, MeetingAdmin)
 admin.site.register(SignIn)
+admin.site.site_header = 'MOEministration'
