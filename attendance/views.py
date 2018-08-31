@@ -7,8 +7,8 @@ from django.shortcuts import get_list_or_404, get_object_or_404
 
 
 def index(request):
-    today = datetime.datetime.strftime(datetime.datetime.now(), '%A, %B %-d')
-    time = datetime.datetime.strftime(datetime.datetime.now(), '%-I:%M %p')
+    today = datetime.datetime.strftime(datetime.datetime.now(), '%A, %B %d')
+    time = datetime.datetime.strftime(datetime.datetime.now(), '%I:%M %p')
 
     try:
         current_meeting = Meeting.objects.get(pk=datetime.datetime.now().date())
