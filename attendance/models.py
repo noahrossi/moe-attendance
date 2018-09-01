@@ -10,6 +10,7 @@ class Student(models.Model):
             ('d', 'Media'),
     )
     birthmonths = (
+            (0, 'NEW'),
             (1, 'Jan'),
             (2, 'Feb'),
             (3, 'Mar'),
@@ -23,16 +24,21 @@ class Student(models.Model):
             (11, 'Nov'),
             (12, 'Dec'),
     )
-    birthmonth = models.PositiveSmallIntegerField('student birthmonth', choices=birthmonths)
+    birthmonth = models.PositiveSmallIntegerField('student birthmonth', choices=birthmonths, default=0)
     first_name = models.CharField(max_length=20)
     last_name = models.CharField(max_length=20)
-    subteam = models.CharField(max_length=1, choices=subteams)
+    subteam = models.CharField(max_length=1, choices=subteams, blank=True)
 
     def meetings_attended(self):
         return len(SignIn.objects.filter(student_id=self))
 
     def percent_attended(self):
-        return str(round(self.meetings_attended()/len(SignIn.objects.all())*100,2)) + "%"
+        num_meetings = len(SignIn.objects.all())
+
+        if num_meetings:
+            return str(round(self.meetings_attended()/num_meetings*100,2)) + "%"
+        else:
+            return 0
 
     def __str__(self):
         return self.first_name + ' ' + self.last_name

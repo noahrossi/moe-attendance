@@ -1,0 +1,8 @@
+<h1>Please select your birth month below</h1>
+{% for i in "xxxxxxxxxxxx" %}
+    <a href="{% url 'change_month' user_id forloop.counter0|add:1 %}">
+        <button style="font-size: 2em; width:40%; display:inline-block; margin: 10px 3% 10px 3%; padding: 20px 5px 20px 5px;">
+            {{ forloop.counter0|add:1 }}
+        </button>
+    </a>
+{% endfor %}

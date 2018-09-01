@@ -1,9 +1,14 @@
 {% if meeting %}
 <h1>Meeting: {{ meeting }}</h1>
 <h2>It is {{ time }}</h2>
+    <a href="0">
+        <button style="font-size: 2em; width:85%; margin: 10px 3% 10px 3%; ">
+            NEW? CLICK HERE
+        </button>
+    </a>
 {% for i in "xxxxxxxxxxxx" %}
     <a href="{{ forloop.counter0|add:1 }}">
-        <button style="width:40%; display:inline-block; margin: 10px 3% 10px 3%; padding: 20px 5px 20px 5px;">
+        <button style="font-size: 3em; width:40%; display:inline-block; margin: 10px 3% 10px 3%; padding: 0px 0px 0px 0px;">
             {{ forloop.counter0|add:1 }}
         </button>
     </a>

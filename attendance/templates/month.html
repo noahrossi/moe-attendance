@@ -2,7 +2,7 @@
     <ul>
     {% for student in students %}
 	<a href="{% url 'signin' student.id %}">
-	    <button style="width:80%; margin: 10px 10px 10px 10%; padding: 5px 5px 5px 5px;">
+            <button style="font-size: 2em; width:40%; display:inline-block; margin: 10px 3% 10px 3%; padding: 0px 0px 0px 0px;">
 		{{ student.last_name }}, {{ student.first_name }}
 	    </button>
 	</a>

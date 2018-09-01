@@ -32,4 +32,21 @@ def signin(request, userid):
     SignIn.objects.create(student_id=student_id, meeting_id=meeting_id,
             time = datetime.datetime.now().time())
 
+    if student_id.birthmonth == 0:
+        return HttpResponseRedirect('new/' + str(student_id.id))
+
+    return HttpResponseRedirect('/attendance')
+
+def new(request, userid):
+    context = {'user_id': userid}
+
+    return render(request, 'new.html', context)
+
+def change_month(request, userid, month_num):
+    student_id = get_object_or_404(Student, pk=userid)
+
+    student_id.birthmonth = month_num
+
+    student_id.save()
+
     return HttpResponseRedirect('/attendance')
