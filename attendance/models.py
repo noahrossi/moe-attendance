@@ -33,7 +33,7 @@ class Student(models.Model):
         return len(SignIn.objects.filter(student_id=self))
 
     def percent_attended(self):
-        num_meetings = len(SignIn.objects.all())
+        num_meetings = len(Meeting.objects.all())
 
         if num_meetings:
             return str(round(self.meetings_attended()/num_meetings*100,2)) + "%"
