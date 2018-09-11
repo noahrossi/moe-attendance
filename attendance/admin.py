@@ -34,4 +34,4 @@ class MeetingAdmin(admin.ModelAdmin):
 admin.site.register(Student, StudentAdmin)
 admin.site.register(Meeting, MeetingAdmin)
 admin.site.register(SignIn)
-admin.site.site_header = 'MOEministration'
+admin.site.site_header = 'AdMOEnistration'
