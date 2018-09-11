@@ -35,7 +35,7 @@ def signin(request, userid):
     if student_id.birthmonth == 0:
         return HttpResponseRedirect('new/' + str(student_id.id))
 
-    return HttpResponseRedirect('/attendance')
+    return HttpResponseRedirect('/')
 
 def new(request, userid):
     context = {'user_id': userid}
@@ -49,4 +49,4 @@ def change_month(request, userid, month_num):
 
     student_id.save()
 
-    return HttpResponseRedirect('/attendance')
+    return HttpResponseRedirect('/')
